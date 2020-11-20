@@ -5,6 +5,8 @@
 
 typedef unsigned int uint32;
 
+typedef char byte_t;
+
 typedef union {
     char character;
     short short_int;
@@ -17,11 +19,19 @@ typedef hash_key_t hash_data_t;
 
 typedef uint32 hashcode_t;
 
+
 typedef struct {
     hashcode_t hashcode;
+    byte_t flag;
     hash_key_t key;
     hash_data_t data;
 } hash_entry_t;
+
+// entry flags
+#define HASH_TABLE_DUMMY 1
+
+#define is_entry_dummy(entry) (entry->flag & HASH_TABLE_DUMMY)
+
 
 typedef hashcode_t (*hash_func_ptr_t)(hashcode_t * hashcode, const hash_key_t key);
 
@@ -30,6 +40,7 @@ typedef struct{
     hash_func_ptr_t hash_func_ptr;
     size_t size;
     size_t used;
+    size_t dummy_count;
 }hash_table_t;
     
 
