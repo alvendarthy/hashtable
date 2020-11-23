@@ -50,4 +50,4 @@ There are always 2\*\*i entries in the hash table, 8 for example. The visite ord
 
 # More
 
-see hashtable.h for details.
+see [hashtable.h](https://github.com/alvendarthy/hashtable/blob/main/hashtable.h) for details.
